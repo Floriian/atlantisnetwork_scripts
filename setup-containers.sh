@@ -16,7 +16,7 @@ function readCredentials {
 if [ $((serviceCode)) -eq 1 ] 
 then
   readCredentials
-  sudo docker run --name $containerName -e MYSQL_ROOT_PASSWORD=$password MYSQL_USER=$username MYSQL_PASSWORD=$password MYSQL_DATABASE=$baseDB -d mysql:latest
+  sudo docker run --name $containerName -e MYSQL_ROOT_PASSWORD=$password MYSQL_USER=$username MYSQL_PASSWORD=$password MYSQL_DATABASE=$baseDB -d mysql:8.0
 elif [ $((serviceCode)) -eq 2 ]
 then
   echo PostgreSQL
