@@ -6,6 +6,7 @@ echo 1. MySQL 2. PostgreSQL 3. Http/Https.
 read -p 'Sorszam: ' serviceCode
 
 function readCredentials {
+  read -p 'Container neve: ' containerName
   read -p 'Felhasznalonev: ' username
   read -p 'Jelszo: ' password
   read -p 'Alap adatbazis neve: ' baseDB
@@ -14,10 +15,7 @@ function readCredentials {
 if [ $((serviceCode)) -eq 1 ] 
 then
   readCredentials
-  echo $username
-  echo $password
-  echo $baseDB
-
+  sudo docker run --name $containerName -e MYSQL_ROOT_PASSWORD=$password MYSQL_USER=$username MYSQL_PASSWORD=$password MYSQL_DATABASE=$baseDB
 elif [ $((serviceCode)) -eq 2 ]
 then
   echo PostgreSQL
