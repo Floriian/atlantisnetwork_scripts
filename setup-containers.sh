@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo Kerem valassza ki, hogy melyik szolgaltatast szeretne telepiteni a Dockerhez!
+echo FIGYELEM! Ez a program a felsoroltakbol a legujabb verziot hasznalja!
 echo 1. MySQL 2. PostgreSQL 3. Http/Https.
 
 read -p 'Sorszam: ' serviceCode
@@ -15,7 +16,7 @@ function readCredentials {
 if [ $((serviceCode)) -eq 1 ] 
 then
   readCredentials
-  sudo docker run --name $containerName -e MYSQL_ROOT_PASSWORD=$password MYSQL_USER=$username MYSQL_PASSWORD=$password MYSQL_DATABASE=$baseDB
+  sudo docker run --name $containerName -e MYSQL_ROOT_PASSWORD=$password MYSQL_USER=$username MYSQL_PASSWORD=$password MYSQL_DATABASE=$baseDB -d mysql:latest
 elif [ $((serviceCode)) -eq 2 ]
 then
   echo PostgreSQL
