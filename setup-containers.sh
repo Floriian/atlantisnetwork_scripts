@@ -5,9 +5,18 @@ echo 1. MySQL 2. PostgreSQL 3. Http/Https.
 
 read -p 'Sorszam: ' serviceCode
 
+function readCredentials {
+  read -p 'Felhasznalonev: ' username
+  read -p 'Jelszo: ' password
+  read -p 'Alap adatbazis neve: ' baseDB
+}
+
 if [ $((serviceCode)) -eq 1 ] 
 then
-  echo MySQL
+  readCredentials
+  echo $username
+  echo $password
+  echo $baseDB
 
 elif [ $((serviceCode)) -eq 2 ]
 then
