@@ -20,7 +20,7 @@ then
   echo $username
   echo $password
   echo $baseDB
-
+  docker run --name $containerName -e MYSQL_ROOT_PASSWORD=$password MYSQL_USER=$username MYSQL_PASSWORD=$password MYSQL_DATABASE=$baseDB mysql:8.0 -d 
 elif [ $((serviceCode)) -eq 2 ]
 then
   echo PostgreSQL
